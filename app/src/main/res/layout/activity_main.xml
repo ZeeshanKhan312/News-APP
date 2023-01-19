@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".MainActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -28,57 +29,62 @@
                 android:textColor="#03A9F4"
                 android:textSize="20sp"
                 android:textStyle="bold" />
-
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
 
     <com.google.android.material.tabs.TabLayout
+        android:id="@+id/TabLayout"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:id="@+id/TabLayout"
         android:layout_below="@+id/toolbar"
-        app:tabTextColor="#618C8f"
-        app:tabSelectedTextColor="#03A9F4"
+        android:backgroundTint="@color/white"
         app:tabIndicatorColor="#03A9F4"
         app:tabIndicatorHeight="3.5dp"
         app:tabMode="scrollable"
-        android:backgroundTint="@color/white">
+        app:tabSelectedTextColor="#03A9F4"
+        app:tabTextColor="#618C8f">
 
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="HOME"
-            android:id="@+id/home"/>
+            android:text="HOME" />
+
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/sports"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SPORTS"
-            android:id="@+id/sports"/>
+            android:text="SPORTS" />
+
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/business"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="BUSINESS"
-            android:id="@+id/business"/>
+            android:text="BUSINESS" />
+
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/entertainment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ENTERTAINMENT"
-            android:id="@+id/entertainment"/>
+            android:text="ENTERTAINMENT" />
+
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/health"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="HEALTH"
-            android:id="@+id/health"/>
+            android:text="HEALTH" />
+
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/science"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SCIENCE"
-            android:id="@+id/science"/>
+            android:text="SCIENCE" />
+
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/technology"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TECHNOLOGY"
-            android:id="@+id/technology"/>
+            android:text="TECHNOLOGY" />
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager.widget.ViewPager

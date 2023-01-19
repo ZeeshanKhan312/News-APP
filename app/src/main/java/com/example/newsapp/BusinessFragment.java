@@ -1,5 +1,7 @@
 package com.example.newsapp;
 
+import static com.example.newsapp.MainActivity.categoryNews;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,19 +37,21 @@ public class BusinessFragment extends Fragment {
         adapter=new Adapter(getContext(),newsList);
         businessRecyclerView.setAdapter(adapter);
 
-        //find Category wise news
-        ApiUtilities.getApiInterface().getCategoryNews(country,category,100,api).enqueue(new Callback<News>() {
-            @Override
-            public void onResponse(Call<News> call, Response<News> response) {
-                newsList.addAll(response.body().getArticles());
-                adapter.notifyDataSetChanged();
-            }
+        categoryNews(country,category,getContext(), adapter, newsList);
 
-            @Override
-            public void onFailure(Call<News> call, Throwable t) {
-
-            }
-        });
+//        //find Category wise news
+//        ApiUtilities.getApiInterface().getCategoryNews(country,category,100,api).enqueue(new Callback<News>() {
+//            @Override
+//            public void onResponse(Call<News> call, Response<News> response) {
+//                newsList.addAll(response.body().getArticles());
+//                adapter.notifyDataSetChanged();
+//            }
+//
+//            @Override
+//            public void onFailure(Call<News> call, Throwable t) {
+//
+//            }
+//        });
         return view;
     }
 }

@@ -1,5 +1,7 @@
 package com.example.newsapp;
 
+import static com.example.newsapp.MainActivity.news;
+import static com.example.newsapp.MainActivity.searchNews;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +9,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,6 +27,7 @@ public class HomeFragment extends Fragment {
     Adapter adapter;
     RecyclerView homeRecyclerView;
     ArrayList<Model> newsList;
+    androidx.appcompat.widget.SearchView searchBar;
 
     @Nullable
     @Override
@@ -31,23 +35,29 @@ public class HomeFragment extends Fragment {
         View view=inflater.inflate(R.layout.home_fragment,null);
         homeRecyclerView=view.findViewById(R.id.homeRecyclerView);
         newsList=new ArrayList<>();
+        searchBar=view.findViewById(R.id.search_bar);
+
         homeRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter=new Adapter(getContext(),newsList);
         homeRecyclerView.setAdapter(adapter);
 
         //find News
-        ApiUtilities.getApiInterface().getNews(country,100,api).enqueue(new Callback<News>() {
+        news(country, adapter, newsList);
+
+        searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public void onResponse(Call<News> call, Response<News> response) {
-                newsList.addAll(response.body().getArticles());
-                adapter.notifyDataSetChanged();
+            public boolean onQueryTextSubmit(String query) {
+                searchNews(query,adapter,newsList);
+                return true;
             }
 
             @Override
-            public void onFailure(Call<News> call, Throwable t) {
-
+            public boolean onQueryTextChange(String newText) {
+                    return false;
             }
         });
+
+
 
         return view;
     }
