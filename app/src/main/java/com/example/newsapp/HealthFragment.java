@@ -1,5 +1,7 @@
 package com.example.newsapp;
 
+import static com.example.newsapp.MainActivity.categoryNews;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,9 +20,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class HealthFragment extends Fragment {
-
-    String api="abf710fc482b48debbe6100332e3bd91";
-    String country="in";
     String category="Health";
     Adapter adapter;
     RecyclerView healthRecyclerView;
@@ -37,18 +36,7 @@ public class HealthFragment extends Fragment {
         healthRecyclerView.setAdapter(adapter);
 
         //find Category wise news
-        ApiUtilities.getApiInterface().getCategoryNews(country,category,100,api).enqueue(new Callback<News>() {
-            @Override
-            public void onResponse(Call<News> call, Response<News> response) {
-                newsList.addAll(response.body().getArticles());
-                adapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onFailure(Call<News> call, Throwable t) {
-
-            }
-        });
+        categoryNews(category, adapter, newsList);
 
         return view;
     }

@@ -20,8 +20,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SportsFragment extends Fragment {
-    String api="abf710fc482b48debbe6100332e3bd91";
-    String country="in";
+//    String api="abf710fc482b48debbe6100332e3bd91";
+//    String country="in";
     String category="Sports";
     Adapter adapter;
     RecyclerView sportsRecyclerView;
@@ -39,7 +39,7 @@ public class SportsFragment extends Fragment {
         adapter=new Adapter(getContext(),newsList);
         sportsRecyclerView.setAdapter(adapter);
 
-        categoryNews(country,category,getContext(),adapter, newsList);
+        categoryNews(category,adapter, newsList);
 
 //        //find Category wise news
 //        ApiUtilities.getApiInterface().getCategoryNews(country,category,100,api).enqueue(new Callback<News>() {

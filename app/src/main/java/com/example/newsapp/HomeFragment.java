@@ -21,9 +21,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
-
-    String api="abf710fc482b48debbe6100332e3bd91";
-    String country="in";
     Adapter adapter;
     RecyclerView homeRecyclerView;
     ArrayList<Model> newsList;
@@ -41,9 +38,10 @@ public class HomeFragment extends Fragment {
         adapter=new Adapter(getContext(),newsList);
         homeRecyclerView.setAdapter(adapter);
 
-        //find News
-        news(country, adapter, newsList);
+        //fetching News
+        news(adapter, newsList);
 
+        //searching news
         searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -56,7 +54,6 @@ public class HomeFragment extends Fragment {
                     return false;
             }
         });
-
 
 
         return view;

@@ -23,7 +23,8 @@ import retrofit2.Response;
     TabItem tHome,tSports,tBusiness, tEntertainment, tHealth, tScience, tTechnology;
     androidx.appcompat.widget.Toolbar toolbar;
     PageAdapter pageAdapter;
-   static String api="abf710fc482b48debbe6100332e3bd91";
+    static String country="in";
+    static String api="abf710fc482b48debbe6100332e3bd91";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +74,7 @@ import retrofit2.Response;
 
     }
 
-    public static void news(String country, Adapter adapter, ArrayList<Model> newsList){
+    public static void news(Adapter adapter, ArrayList<Model> newsList){
         newsList.clear();
         ApiUtilities.getApiInterface().getNews(country,100,api).enqueue(new Callback<News>() {
             @Override
@@ -89,7 +90,7 @@ import retrofit2.Response;
         });
     }
 
-    public static void categoryNews(String country, String category, Context context,Adapter adapter, ArrayList<Model>newsList){
+    public static void categoryNews(String category, Adapter adapter, ArrayList<Model>newsList){
 //        ArrayList<Model>newsList= new ArrayList<>();
 //        Adapter adapter=new Adapter(context,newsList);
         //find Category wise news
