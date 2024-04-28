@@ -1,5 +1,7 @@
 package com.example.newsapp;
 
+import android.Manifest;
+import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.provider.Settings;
