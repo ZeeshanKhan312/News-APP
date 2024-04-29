@@ -13,7 +13,7 @@ import android.widget.TextView;
 public class IntroPageActivity extends AppCompatActivity {
 
     private LottieAnimationView lottieView;
-    private TextView introHeading,getStartedBtn;
+    private TextView getStartedBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,33 +21,17 @@ public class IntroPageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_intro_page);
 
         lottieView = findViewById(R.id.lottieView);
-        introHeading = findViewById(R.id.introHeading);
         getStartedBtn=findViewById(R.id.getStartedBtn);
 
-
-        long i = 4;
-        while (i < 1000) {
-            new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    lottieView.setAnimation(R.raw.animation_2);
-                    lottieView.playAnimation();
-                }
-            },100);
-
-            i += 5;
-            final long finalI1 = i;
             new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     lottieView.setAnimation(R.raw.animation_1);
                     lottieView.playAnimation();
                 }
-            }, finalI1 * 1000);
+            },  4000);
 
-            i += 6;
 
-        }
 
         getStartedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
